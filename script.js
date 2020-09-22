@@ -12,6 +12,7 @@ Chinese: 4bf58dd8d48988d145941735
 */
 
 // DOM elements
+const venueContainer = document.getElementById("venue-container");
 const openSlide = document.getElementById("open-slide");
 const closeSlide = document.getElementById("close-slide");
 
@@ -22,7 +23,32 @@ async function getData() {
     try {
         const response = await fetch(apiURL);
         const data = await response.json();
-        console.log(data);
+        const list = data.response.venues;
+        console.log(list);
+    
+    list.forEach(function(venue) {
+        // Create wrapper for venue data
+        const wrapperDiv = document.createElement("div");
+        wrapperDiv.id = 'wrapper-div';
+        // Create name, address, site 
+        var nameDiv = document.createElement("h1");
+        var addressDiv = document.createElement("div");
+        var linkDiv = document.createElement("a");
+        var linkText = document.createTextNode("website");
+        // Reduce font size depending on restaurant name length
+        venue.name.length > 20 ? nameDiv.classList.add('long-title') : nameDiv.classList.remove('long-title');
+            nameDiv.append(document.createTextNode(`${venue.name}`))
+            addressDiv.append(document.createTextNode(`${venue.location.formattedAddress[0]}`));
+            linkDiv.append(linkText);
+            linkDiv.title = "website";
+            linkDiv.href = venue
+        // Append Name, Address, and Link
+        wrapperDiv.append(nameDiv);
+        wrapperDiv.append(addressDiv);
+        wrapperDiv.append(linkDiv);
+        // Append wrapper to container div
+        venueContainer.appendChild(wrapperDiv);
+    })
     } catch (error) {
         console.log(error);
     }

@@ -2,6 +2,7 @@
 
 html {
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 body {
@@ -13,10 +14,6 @@ body {
   color: black;
   font-family: "VT323", monospace;
   text-align: center;
-  /* display: flex;
-  flex-direction: row;  */
-  /* align-items: center;
-  justify-content: center; */
 }
 
 .navbar {
@@ -74,11 +71,12 @@ body {
   font-size: 36px;
   margin-left: 50px;
 }
-.country-container {
-  padding: 300px 20px 0 20px;
+.venue-container {
+  padding: 150px 20px 0 20px;
   margin: 10px;
-  overflow: hidden;
+  overflow: scroll; 
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   transition: 0.5s;
 }
@@ -90,8 +88,8 @@ body {
 #wrapper-div {
   display: flex;
   flex-direction: column;
-  width: auto;
-  max-width: 500px;
+  /* width: auto; */
+  width: 350px;
   margin: 10px;
   padding: 20px 30px;
   border-radius: 10px;
@@ -100,7 +98,11 @@ body {
 }
 
 #wrapper-div h1 {
-  font-size: 1.5em;
-  font-weight: 900;
+  font-size: 1.25em;
+  font-weight: 750;
   text-align: center;
+}
+
+#wrapper-div #address-div {
+    text-align: center;
 }
