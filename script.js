@@ -1,15 +1,5 @@
 import config from "./env.js";
 
-/* Category IDs
-
-Italian: 4bf58dd8d48988d110941735
-Mexican: 4bf58dd8d48988d1c1941735
-Vegetarian: 4bf58dd8d48988d1d3941735
-Japanese: 4bf58dd8d48988d111941735
-Chinese: 4bf58dd8d48988d145941735
-
-*/
-
 // DOM elements
 const venueContainer = document.getElementById("venue-container");
 const openSlide = document.getElementById("open-slide");
@@ -39,14 +29,17 @@ async function displayList(category) {
         var nameDiv = document.createElement("h1");
         var addressDiv = document.createElement("div");
         var linkDiv = document.createElement("a");
-        var linkText = document.createTextNode("website");
+        var linkText = document.createTextNode("get delivery");
         // Reduce font size depending on restaurant name length
         venue.name.length > 20 ? nameDiv.classList.add('long-title') : nameDiv.classList.remove('long-title');
             nameDiv.append(document.createTextNode(`${venue.name}`))
             addressDiv.append(document.createTextNode(`${venue.location.formattedAddress[0]}`));
+        if (venue.delivery) {
             linkDiv.append(linkText);
-            linkDiv.title = "website";
-            linkDiv.href = venue
+            linkDiv.title = "get delivery";
+            linkDiv.href = venue.delivery.url;
+            linkDiv.target = "_blank";
+        }
         // Append Name, Address, and Link
         wrapperDiv.append(nameDiv);
         wrapperDiv.append(addressDiv);
@@ -62,12 +55,12 @@ async function displayList(category) {
 // Events
 function openSlideMenu() {
   document.getElementById("side-menu").style.width = "250px";
-  document.getElementById("country-container").style.marginLeft = "250px";
+  document.getElementById("venue-container").style.marginLeft = "250px";
 }
 
 function closeSlideMenu() {
   document.getElementById("side-menu").style.width = "0";
-  document.getElementById("country-container").style.marginLeft = "0";
+  document.getElementById("venue-container").style.marginLeft = "0";
 }
 
 function categoryOnClick(evt) {

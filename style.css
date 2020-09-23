@@ -93,7 +93,7 @@ body {
   margin: 10px;
   padding: 20px 30px;
   border-radius: 10px;
-  background-color: #e6e6e6;
+  background-color: #fff3d4;
   box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -101,5 +101,15 @@ body {
   font-size: 1.25em;
   font-weight: 750;
   text-align: center;
+  padding-top: 15px;
+}
+
+#wrapper-div div {
+    text-align: center;
+}
+
+#wrapper-div a {
+    text-align: center;
+    padding: 10px
 }
 
